@@ -20,7 +20,7 @@ export REDIS_USER='default'
 export REDIS_PASSWORD='********************************'
 
 alias run='uvicorn main:app --reload'
-alias redis='redis-cli -a ******************************** -h redis-19008.c51.ap-southeast-2-1.ec2.cloud.redislabs.com -p 19008'
+alias redis='redis-cli -a ******************************** -h ***********.*********************.ec2.cloud.redislabs.com -p 19008'
 
 export TEST_ACCESS_TOKEN_ALPHA='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBleGFtcGxlLmNvbSIsImV4cCI6MTY2MTk1MDM2N30.Jbi-wfFwlrGx0xsSptmjYc-HAoogrAecCJMKc1REL2E'
 export TEST_ACCESS_TOKEN_GAMMA='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYW1tYUBkZWx0YS5jb20iLCJleHAiOjE2NjE5NTA0ODN9.yZGtsrexHa5vZzej4W_-YyBgI4M046gZUXyLHXpDoEI'
