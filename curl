@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+method='POST'
+path='/token'
+data="--data 'username=alpha@example.com&password=secret&grant_type=&scope=&client_id=&client_secret='"
+data="--data 'username=gamma@delta.com&password=secret'"
+
+host='http://127.0.0.1:8000'
+params=''
+data=''
+
+#path='/api/v1/users'     && method='POST' && data=" --data '{\"email\":\"gamma@delta.com\",\"password\":\"secret\"}'"
+#path='/api/v1/users'     && method='POST' && data=" --data '{\"email\":\"gamma@delta.com\",\"name\":\"Gamma Delta\",\"plain\":\"secret\"}'" # FBi4Tb95oWTnJbqxvD3qbX
+
+path='/api/v1'           && method='GET' && data=''
+path='/api/v1/users/me'  && method='GET' && data=''
+
+path='/api/v1/questions' && method='POST' && data=" --data '{\"text\":\"What units is temperature measured in!\"}'"
+path='/api/v1/questions/hcA9LtoNzKwG8Uvb4itR4G-KXY3wNrdFEMwqRcsnBe852' && method='PUT' && data=" --data '{\"text\":\"What units is temperature measured in?\"}'"
+path='/api/v1/questions/hcA9LtoNzKwG8Uvb4itR4G-KXY3wNrdFEMwqRcsnBe852' && method='PUT' && data=" --data '{\"answers\":[\"Kelvin\",\"Fahrenheit\",\"Gram\",\"Celsius\",\"Litres\"],\"correct\":[1,1,0,1,0]}'"
+path='/api/v1/questions/hcA9LtoNzKwG8Uvb4itR4G-KXY3wNrdFEMwqRcsnBe852' && method='GET' && data=''
+
+path='/api/v1/questions' && method='POST' && data=" --data '{\"text\":\"How long is a piece of string?\",\"answers\":[\"As long as your arm\",\"That depends\",\"You tell me\"],\"correct\":[0,0,0]}'"
+path='/api/v1/questions' && method='POST' && data=" --data '{\"text\":\"How long is a piece of string?\",\"answers\":[\"As long as your arm\",\"That depends\",\"You tell me\",\"No dont tell me\",\"3cm\",\"Boom!\"],\"correct\":[0,1,0,0,0,0]}'"
+path='/api/v1/questions' && method='POST' && data=" --data '{\"text\":\"How long is a piece of string?\",\"answers\":[\"As long as your arm\",\"That depends\",\"You tell me\"],\"correct\":[0,1,0]}'"
+
+path='/api/v1/questions' && method='POST' && data=" --data '{\"text\":\"Is the moon a star?\",\"answers\":[\"Yes\",\"No\"],\"correct\":[0,1]}'"
+
+path='/api/v1/questions' && method='GET' && data=''
+
+path='/api/v1/quizzes/unauthorized-401' && method='GET' && data='' # NON MATCHING USER UUID
+path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-missing-404' && method='GET' && data='' # NON MATCHING QUIZ UUID
+
+path='/api/v1/quizzes' && method='POST' && data=" --data '{\"title\":\"Test Quiz One\"]}'" # BAD JSON
+path='/api/v1/quizzes' && method='POST' && data=" --data '{\"title\":\"Test Quiz One\"}'"  # FIXED
+
+path='/api/v1/quizzes' && method='GET' && data=''
+
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-jo7VmLo4jdVwATPU5qQYcg' && method='PUT' && data=" --data '{\"published\":true}'"
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-jo7VmLo4jdVwATPU5qQYcg' && method='GET' && data=''
+
+#path='/api/v1/quizzes' && method='POST' && data=" --data '{\"title\":\"Test Quiz Two\",\"published\":true,\"questions\":[\"FBi4Tb95oWTnJbqxvD3qbX-B7cKWmR6ZNqnosFC2nwVK5\",\"FBi4Tb95oWTnJbqxvD3qbX-nYWC4AzytQbsRCpLor5fi7\",\"FBi4Tb95oWTnJbqxvD3qbX-DTYdSBMudPx8c2SvdCqXSt\"]}'"
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ' && method='PUT' && data=" --data '{\"published\":true}'"
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ' && method='GET' && data=''
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ' && method='PUT' && data=" --data '{\"published\":false}'"
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ' && method='PUT' && data=" --data '{\"published\":true}'"
+
+#path='/api/v1/questions/FBi4Tb95oWTnJbqxvD3qbX-nYWC4AzytQbsRCpLor5fi7' && method='DELETE' && data=''
+
+#path='/api/v1/quizzes' && method='GET' && data=''
+#path='/api/v1/quizzes/FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ' && method='GET' && data=''
+#path='/api/v1/questions' && method='GET' && data=''
+#path='/api/v1/solutions' && method='GET' && data=''
+
+## "FBi4Tb95oWTnJbqxvD3qbX-B7cKWmR6ZNqnosFC2nwVK5" [false,true,false]
+## "FBi4Tb95oWTnJbqxvD3qbX-nYWC4AzytQbsRCpLor5fi7" [true,true,false,true,false]
+## "FBi4Tb95oWTnJbqxvD3qbX-DTYdSBMudPx8c2SvdCqXSt" [false,true]
+
+#path='/api/v1/solutions' && method='POST' && data=" --data '{\"quiz\":\"FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ\",\"answers\":[[false,true,false],[true,true,false,true,false],[false,true]]}'"
+#path='/api/v1/solutions' && method='GET' && data=''
+#path='/api/v1/solutions' && method='POST' && data=" --data '{\"quiz\":\"FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ\",\"answers\":[[true,false,false],[true,true,true,false,false],[false,true]]}'"
+#path='/api/v1/solutions' && method='GET' && data=''
+
+## CHANGE USER TOKEN
+
+#path='/api/v1/questions' && method='GET' && data=''
+#path='/api/v1/quizzes' && method='GET' && data=''
+
+#path='/api/v1/solutions' && method='POST' && data=" --data '{\"quiz\":\"FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ\",\"answers\":[[false,false,false],[true,true,true,false,false],[false,true]]}'"
+#path='/api/v1/solutions' && method='GET' && data=''
+#path='/api/v1/solutions' && method='POST' && data=" --data '{\"quiz\":\"FBi4Tb95oWTnJbqxvD3qbX-iQUkk5o2gU6oehnKTiFcNQ\",\"answers\":[[false,false,false],[true,true,true,false,false],[false,true]]}'"
+#path='/api/v1/solutions' && method='GET' && data=''
+
+curl="curl -K .curlrc -X $method '$host$path$params' $data"
+echo $curl >&2
+eval $curl
+
+# TODO: endpoint to return quizzes available for solving

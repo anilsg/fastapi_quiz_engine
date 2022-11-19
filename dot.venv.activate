@@ -1,0 +1,29 @@
+#!/bin/bash
+# alias activate='source ./.venv/activate'
+
+[[ "$(type -t deactivate)" == 'function' ]] && deactivate
+
+DEV="$(pwd)"
+source "$DEV/.venv/bin/activate"
+export HISTFILE="$DEV/.venv/bash_history"
+echo "ACTIVATED $DEV"
+
+export AWS_DEFAULT_REGION='ap-southeast-2' # Asia Pacific (Sydney)
+
+export JWT_SIGNATURE='****************************************************************'
+export JWT_ALGORITHM='HS256'
+export JWT_EXPIRE_MINUTES='720'
+
+export REDIS_HOST='***********.*********************.ec2.cloud.redislabs.com'
+export REDIS_PORT='19008'
+export REDIS_USER='default'
+export REDIS_PASSWORD='********************************'
+
+alias run='uvicorn main:app --reload'
+alias redis='redis-cli -a ******************************** -h redis-19008.c51.ap-southeast-2-1.ec2.cloud.redislabs.com -p 19008'
+
+export TEST_ACCESS_TOKEN_ALPHA='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBleGFtcGxlLmNvbSIsImV4cCI6MTY2MTk1MDM2N30.Jbi-wfFwlrGx0xsSptmjYc-HAoogrAecCJMKc1REL2E'
+export TEST_ACCESS_TOKEN_GAMMA='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYW1tYUBkZWx0YS5jb20iLCJleHAiOjE2NjE5NTA0ODN9.yZGtsrexHa5vZzej4W_-YyBgI4M046gZUXyLHXpDoEI'
+
+# hset "user:alpha@example.com" "uuid" "hcA9LtoNzKwG8Uvb4itR4G" "email" "alpha@example.com" "active" 1 "name" "Alpha Tester" "hashed" "$2b$12$vfC65W0uySJ.o.HTbpdNjus708bMJpyEtVPWK4JvBqXPAIjsTcad6"
+# hset "user:beta@example.com"  "uuid" "hgMaT6kyDkztsgoGtj9xDr" "email" "beta@example.com"  "active" 0 "name" "Beta Tester"  "hashed" "$2b$12$zn6mmdl0Hpq3.zie6birjuJVgOq2Q4ZdcaKEnBHQw0bNfExEoTlle"

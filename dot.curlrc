@@ -1,0 +1,13 @@
+--silent
+--location
+#--compressed
+--cookie "/home/me/curl_cookies"
+--cookie-jar "/home/me/curl_cookies"
+--trace-ascii "/home/me/curl_trace"
+--dump-header ".curl_headers"
+--header "Cache-Control: no-cache"
+--header "Accept: application/json"
+--header "Content-Type: application/json"
+# --header "Content-Type: application/x-www-form-urlencoded"
+# --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBleGFtcGxlLmNvbSIsImV4cCI6MTY2MjQ4NjkxN30.tn7U45PTT-b_U6fn_GLKfx8IKIkYtz3KgM9bqPS75Zo" # Alpha
+--header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYW1tYUBkZWx0YS5jb20iLCJleHAiOjE2NjI0ODY3OTl9.UmrpsFBRnxQArTYSUJ6VotS7-wOtPYDJyF2P3QKCE_c" # Gamma

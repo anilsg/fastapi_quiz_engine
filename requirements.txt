@@ -1,0 +1,10 @@
+uvicorn[standard]
+fastapi
+python-jose[cryptography]
+python-multipart
+bcrypt
+shortuuid
+redis
+flake8
+requests
+pytest
